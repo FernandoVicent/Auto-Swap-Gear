@@ -3,19 +3,19 @@
 Servo myservo;
 
 //set portas dos botões
-const int neutral = 3;
-const int gear = 4;
-const int conditionUp = 10;
-const int conditionDown = 12;
+const int neutral = 10;
+const int gear = 9;
+const int conditionUp = 12;
+const int conditionDown = 11;
 
 //set dos estados dos botões
-int buttonGear = 0;
+int buttonGear = 1;
 int buttonStateUp = 0;
 int buttonStateDown = 0;  // variable for reading the pushbutton status
 int buttonNeutral = 0;
 //------------------------------------------------------------------------------------
 
-void setup() {myservo.attach(9); }
+void setup() {myservo.attach(8); }
 
 void loop() {
 
@@ -26,15 +26,16 @@ void loop() {
   buttonNeutral = digitalRead(neutral);
 //---------------------------------------------------------------------------------
 
-  if(buttonGear == LOW){
+  if(buttonGear == LOW){delay(0);
+    
     //verifica em qual estado o botão está para baixo ou para cima;
 
-    if (buttonStateUp == LOW){   myservo.write(140);}
+    if (buttonStateUp == LOW){   myservo.write(140); }
     
     else if(buttonStateDown == LOW){   myservo.write(30); }
     
     // verifica se a porta 3 está ativa e o neutro liga
-    else if(buttonNeutral == LOW){   myservo.write(50); }
+    else if(buttonNeutral == LOW){   myservo.write(60); }
   
     }
 
